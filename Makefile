@@ -10,7 +10,7 @@ COMPILE=$(COMPILER) $(OPTIONS)
 pwd=$(shell pwd)
 BUILD=build 
 LIB=libraries
-TEST_LIB=...
+TEST_LIB=$(LIB)/Unity
 TEST=test
 SRC=source
 
@@ -21,9 +21,10 @@ FILES_TO_TEST=$(foreach file, $(SRC_FILES), $(findstring $(file), $(TEST_FILES))
 all: help
 
 help: 
-	@echo "--------------------------------------------------------"
-	@echo "struct 		Make the folders needed for the project"	
-	@echo "--------------------------------------------------------"
+	@echo "------------------------------------------------------------"
+	@echo "struct               Make the folders needed for the project"
+	@echo "testing_library      Get the unity testing library"
+	@echo "------------------------------------------------------------"
 
 show:
 	@echo "$(TEST_FILES)"
@@ -36,9 +37,8 @@ struct:
 	@mkdir -p $(pwd)"/$(TEST)"
 	@mkdir -p $(pwd)"/$(SRC)"
 
-$(TEST)/%.c: 
-	$echo "$@"
-
+testing_library:
+	@git clone https://github.com/ThrowTheSwitch/Unity.git "$(pwd)/$(LIB)/Unity"
 
 
 .PHONY: % show 
