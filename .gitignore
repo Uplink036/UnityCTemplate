@@ -1,7 +1,6 @@
 ### C ### 
 # Don't push the Libraries
-Libraries/*
-
+libraries
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/c

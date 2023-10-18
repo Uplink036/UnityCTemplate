@@ -8,7 +8,7 @@ COMPILE=$(COMPILER) $(OPTIONS)
 
 # All folders
 pwd=$(shell pwd)
-BUILD=build 
+BUILD=build
 LIB=libraries
 TEST_LIB=$(LIB)/Unity
 TEST=test
