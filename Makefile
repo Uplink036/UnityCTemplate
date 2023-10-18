@@ -1,8 +1,3 @@
-
-
-
-test: 
-@	echo test
 #Makefile options 
 SHELL=/bin/bash
 
@@ -12,6 +7,7 @@ OPTIONS=-Wall -Wextra -g
 COMPILE=$(COMPILER) $(OPTIONS)
 
 # All folders
+pwd=$(shell pwd)
 BUILD=build 
 LIB=libraries
 TEST_LIB=...
@@ -25,13 +21,20 @@ FILES_TO_TEST=$(foreach file, $(SRC_FILES), $(findstring $(file), $(TEST_FILES))
 all: help
 
 help: 
-	@echo test
+	@echo "--------------------------------------------------------"
+	@echo "struct 		Make the folders needed for the project"	
+	@echo "--------------------------------------------------------"
 
 show:
 	@echo "$(TEST_FILES)"
 	@echo "$(SRC_FILES)"
 	@echo "$(FILES_TO_TEST)"
 
+struct:
+	@mkdir -p $(pwd)"/$(BUILD)"
+	@mkdir -p $(pwd)"/$(LIB)"
+	@mkdir -p $(pwd)"/$(TEST)"
+	@mkdir -p $(pwd)"/$(SRC)"
 
 $(TEST)/%.c: 
 	$echo "$@"
